@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private ImageView iv;
+    GifLoader loader;
 
     static {
         System.loadLibrary("native-lib");
@@ -26,8 +27,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadGif(View view) {
         String path = Environment.getExternalStorageDirectory().getAbsolutePath()+ File.separator+"abc.gif";
-        GifLoader.create(path).into(iv);
+        loader = GifLoader.create(path);
+        loader.into(iv);
     }
 
-
+    @Override
+    protected void onDestroy() {
+        if (loader != null){
+            loader.release();
+        }
+        super.onDestroy();
+    }
 }

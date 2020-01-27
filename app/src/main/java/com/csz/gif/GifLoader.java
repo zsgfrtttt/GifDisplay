@@ -91,6 +91,10 @@ public class GifLoader {
         return updateFrame(mAddress, bitmap);
     }
 
+    public void release(){
+        sLoaderSet.remove(this);
+    }
+
     @Override
     public boolean equals(@Nullable Object obj) {
         boolean assignableFrom = GifLoader.class.isAssignableFrom(obj.getClass());
