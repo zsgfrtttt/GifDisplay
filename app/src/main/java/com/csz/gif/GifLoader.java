@@ -62,13 +62,15 @@ public class GifLoader {
     private GifLoader(String path) {
         if (mPath == path) return;
         mPath = path;
-        mAddress = load(path);
+
     }
 
     public void into(ImageView imageView) {
         if (mImageViewWeakReference == null) {
             mImageViewWeakReference = new WeakReference<>(imageView);
         } else if (imageView == mImageViewWeakReference.get()) return;
+
+        mAddress = load(mPath);
         int width = getWidth();
         int height = getHeight();
         mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
