@@ -92,6 +92,7 @@ public class GifLoader {
     }
 
     public void release(){
+        mImageViewWeakReference.clear();
         sLoaderSet.remove(this);
     }
 

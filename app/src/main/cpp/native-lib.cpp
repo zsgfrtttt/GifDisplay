@@ -72,7 +72,7 @@ Java_com_csz_gif_GifLoader_load(JNIEnv *env, jobject thiz, jstring path) {
     gifFileType->UserData = gifBean;
     gifBean->current_frame = 0;
     gifBean->total_frame = gifFileType->ImageCount;
-    //TODO 如何定义引用变量
+
     ExtensionBlock* ext;
     for (int i = 0; i < gifBean->total_frame; ++i) {
         SavedImage frame = gifFileType->SavedImages[i];
